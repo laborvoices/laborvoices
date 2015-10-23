@@ -3,3 +3,21 @@
   font-weight: inherit;
   margin: inherit;
 }
+
+md-sidenav, 
+md-sidenav.md-locked-open, 
+md-sidenav.md-closed.md-locked-open-add-active {
+    min-width: 200px !important;
+    width: 85vw !important;
+    max-width: 400px !important;
+} 
+
+.col-md-2 {
+	padding-top: 20px;
+	padding-left: 20px;
+	padding-bottom: 10px;
+}
+
+.searchbar {
+	width: 360px;
+}
