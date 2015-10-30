@@ -86,7 +86,19 @@ function initMap() {
       map: map,
       title: factory.name
     });
+
+    marker.addListener('click', function() {
+      displayFactoryInfo(factory);
+    });
   });
+}
+
+function displayFactoryInfo(factory) {
+  console.log("displayFactoryInfo called");
+  console.log(factory);
+  console.log(factory.name);
+  var infobox = document.getElementById("factory-display");
+  infobox.innerHTML = factory.name;
 }
 
 var app = angular.module('StarterApp', ['ngMaterial']);

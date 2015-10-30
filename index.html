@@ -17,39 +17,45 @@
   </md-toolbar>
 <div layout="row" flex>
   <!-- Sidebar -->
-  <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
-    <div class="col-md-2">
-      <!--Search bar-->
+  <md-sidenav layout="column" class="md-padding md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
+    <!-- Search bar -->
+    <div layout>
       <!-- <input ng-model="query" class="searchbar"> -->
       <md-input-container flex>
         <label>search...</label>
-        <input ng-model="query" class="searchbar">
+        <input ng-model="query" id="searchbar">
       </md-input-container>
     </div>
-
-    <div layout class="filter">
+    <!-- Container for all the filters -->
+    <div layout class="filter" layout-wrap>
       <!-- Size Rating -->
       <div flex="30" layout layout-align="center center">
         <span class="md-body-1">size</span>
       </div>
-      <md-slider flex md-discrete ng-model="rating1" step="1" min="1" max="5" aria-label="rating">
-      </md-slider>
-    </div>
-    <div layout class="filter">
+      <div flex="70">
+        <md-slider md-discrete ng-model="rating1" step="1" min="1" max="5" aria-label="rating">
+        </md-slider>
+      </div>
       <!-- Satisfaction Rating -->
       <div flex="30" layout layout-align="center center">
         <span class="md-body-1">satisfaction</span>
       </div>
-      <md-slider flex md-discrete ng-model="rating2" step="1" min="1" max="5" aria-label="rating">
-      </md-slider>
-    </div>
-    <div layout class="filter">
-      <!-- Wages Rating -->
+      <div flex="70">
+        <md-slider flex md-discrete ng-model="rating2" step="1" min="1" max="5" aria-label="rating">
+        </md-slider>
+      </div>
+     <!-- Wages Rating -->
       <div flex="30" layout layout-align="center center">
         <span class="md-body-1">wages</span>
       </div>
-      <md-slider flex  md-discrete ng-model="rating3" step="1" min="1" max="5" aria-label="rating">
-      </md-slider>
+      <div flex="70">
+        <md-slider flex  md-discrete ng-model="rating3" step="1" min="1" max="5" aria-label="rating">
+        </md-slider>
+      </div>
+    </div>
+    <md-divider id="sidebar-divider"></md-divider>
+    <div layout id="sidebar-display" class="md-margin" layout-align="center center">
+      TEST TEST
     </div>
   </md-sidenav>
 
