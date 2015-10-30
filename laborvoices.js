@@ -88,7 +88,7 @@ function initMap() {
     });
 
     marker.addListener('click', function() {
-      map.setCenter(marker.getPosition());
+      map.panTo(marker.getPosition());
       displayFactoryInfo(factory);
       // TODO: blur out the irrelevant parts of the map?
     });
