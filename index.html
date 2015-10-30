@@ -6,47 +6,58 @@
   <link rel="stylesheet" href="laborvoices.css">
 </head>
 <body layout="column" ng-controller="AppCtrl">
+  <!-- Header Bar -->
   <md-toolbar layout="row">
-  <div class="md-toolbar-tools">
-    <md-button ng-click="toggleSidenav('left')" hide-gt-sm class="md-icon-button">
-    <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg"></md-icon>
-  </md-button>
-  <h1>Laborvoices</h1>
-</div>
-</md-toolbar>
+    <div class="md-toolbar-tools">
+      <md-button ng-click="toggleSidenav('left')" hide-gt-sm class="md-icon-button">
+      <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg"></md-icon>
+      </md-button>
+      <h1>Laborvoices</h1>
+    </div>
+  </md-toolbar>
 <div layout="row" flex>
+  <!-- Sidebar -->
   <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
     <div class="col-md-2">
       <!--Search bar-->
-      <input ng-model="query" class="searchbar">
+      <!-- <input ng-model="query" class="searchbar"> -->
+      <md-input-container flex>
+        <label>search...</label>
+        <input ng-model="query" class="searchbar">
+      </md-input-container>
     </div>
 
-    <div layout>
+    <div layout class="filter">
+      <!-- Size Rating -->
       <div flex="30" layout layout-align="center center">
         <span class="md-body-1">size</span>
       </div>
       <md-slider flex md-discrete ng-model="rating1" step="1" min="1" max="5" aria-label="rating">
       </md-slider>
     </div>
-    <div layout>
+    <div layout class="filter">
+      <!-- Satisfaction Rating -->
       <div flex="30" layout layout-align="center center">
         <span class="md-body-1">satisfaction</span>
       </div>
-      <md-slider flex class="md-warn" md-discrete ng-model="rating2" step="1" min="1" max="5" aria-label="rating">
+      <md-slider flex md-discrete ng-model="rating2" step="1" min="1" max="5" aria-label="rating">
       </md-slider>
     </div>
-    <div layout>
+    <div layout class="filter">
+      <!-- Wages Rating -->
       <div flex="30" layout layout-align="center center">
-      <span class="md-body-1">wages</span>
+        <span class="md-body-1">wages</span>
       </div>
-      <md-slider flex class="md-warn" md-discrete ng-model="rating3" step="1" min="1" max="5" aria-label="rating">
-    </md-slider>
+      <md-slider flex  md-discrete ng-model="rating3" step="1" min="1" max="5" aria-label="rating">
+      </md-slider>
     </div>
   </md-sidenav>
 
-<div layout="column" flex id="content"> -->
-  <md-content layout="column" flex class="md-padding">
+  <!-- Main page content -->
+  <div layout="column" flex id="content">
+    <md-content layout="column" flex class="md-padding">
   </md-content>
+  </div>
 </div>
 
 <!-- Angular Material Dependencies -->
@@ -56,18 +67,6 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.js"></script>
 <script src="laborvoices.js"></script>
-<script type="text/javascript">
-
-var map;
-function initMap() {
-  console.log("Initializing map");
-  map = new google.maps.Map(document.getElementById('content'), {
-    center: {lat: 23.7, lng: 90.35},
-    zoom: 8
-  });
-}
-
-</script>
 <script async defer
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA99SeuHN61mrAF-HhLOBFscR9JKeDKUmE&callback=initMap">
 </script>
