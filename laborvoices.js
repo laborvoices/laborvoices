@@ -88,17 +88,42 @@ function initMap() {
     });
 
     marker.addListener('click', function() {
+      map.setCenter(marker.getPosition());
       displayFactoryInfo(factory);
+      // TODO: blur out the irrelevant parts of the map?
     });
   });
 }
 
+function displayFactoryPictures(pictureDiv, factory) {
+
+}
+
+function getScore(factory) {
+  return 5.0;
+}
+
+function getSafety(factory) {
+  return "UNKNOWN";
+}
+
 function displayFactoryInfo(factory) {
-  console.log("displayFactoryInfo called");
   console.log(factory);
-  console.log(factory.name);
-  var infobox = document.getElementById("factory-display");
-  infobox.innerHTML = factory.name;
+  var ratings = factory.ratings;
+  var infobox = document.getElementById("sidebar-display");
+
+  infobox.style.display = "block";
+  document.getElementById("factory-name").innerHTML = factory.name;
+  document.getElementById("factory-score").innerHTML = getScore(factory);
+  displayFactoryPictures(document.getElementById("factory-pictures"), factory)
+  document.getElementById("factory-size").innerHTML = 
+    factory.numWorkers ? factory.numWorkers : "UNKNOWN";
+  document.getElementById("factory-satisfaction").innerHTML = 
+    ratings.workerRecommendation ? ratings.workerRecommendation : "UNKNOWN";
+  document.getElementById("factory-wages").innerHTML =
+    ratings.monthlyWage ? ratings.monthlyWage : "UNKNOWN";
+  document.getElementById("factory-safety").innerHTML =
+    getSafety(factory);
 }
 
 var app = angular.module('StarterApp', ['ngMaterial']);

@@ -54,9 +54,38 @@
       </div>
     </div>
     <md-divider id="sidebar-divider"></md-divider>
-    <div layout id="sidebar-display" class="md-margin" layout-align="center center">
-      TEST TEST
-    </div>
+    <md-content layout id="sidebar-display" class="md-margin md-padding">
+      <div layout layout-align="start center" id="factory-display" layout-wrap>
+        <!-- Name and score -->
+        <div flex="70" layout class="md-title" id="factory-name"></div>
+        <div flex="30" layout layout-align="end" class="md-title">
+          <span id="factory-score"></span>/10
+        </div>
+        <!-- Pictures -->
+        <div flex="100" layout layout-padding id="factory-pictures" layout-align="center center">
+          <div class="md-caption">
+           <!-- TODO: check out grid list on Angular Materials for displaying pictures-->
+          </div>
+        </div>
+        <!-- Size -->
+        <div flex="70" layout layout-align="start" class="md-subhead">size</div>
+        <div flex="30" layout layout-align="end" class="md-body-1" id="factory-size"></div>
+
+        <!-- Wages -->
+        <div flex="70" layout layout-align="start" class="md-subhead">wages</div>
+        <div flex="30" layout layout-align="end" class="md-body-1" id="factory-wages"></div>
+
+        <!-- Satisfaction -->
+        <div flex="70" layout layout-align="start" class="md-subhead">satisfaction</div>
+        <div flex="30" layout layout-align="end" class="md-body-1" id="factory-satisfaction"></div>
+
+        <!-- Safety -->
+        <div flex="70" layout layout-align="start" class="md-subhead">safety</div>
+        <div flex="30" layout layout-align="end" class="md-body-1" id="factory-safety">
+          <!-- TODO: some sort of checkbox for the different safety criteria? -->
+        </div>
+      </div>
+    </md-content>
   </md-sidenav>
 
   <!-- Main page content -->

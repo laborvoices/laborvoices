@@ -12,11 +12,16 @@ md-sidenav.md-closed.md-locked-open-add-active {
     max-width: 400px !important;
 }
 
+.right {
+  text-align: right;
+}
+
 #sidebar-divider {
   margin: 20px 0px;
 } 
 
 #sidebar-display {
+  display: none;
   height: 100%;
   background-color: #eee;
 }
