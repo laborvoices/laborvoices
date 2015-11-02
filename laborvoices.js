@@ -122,11 +122,3 @@ app.filter('searchFor', function(){
     };
 });
 
-var map;
-function initMap() {
-  console.log("Initializing map");
-  map = new google.maps.Map(document.getElementById('content'), {
-    center: {lat: 23.7, lng: 90.35},
-    zoom: 8
-  });
-}
