@@ -17,49 +17,75 @@
   </md-toolbar>
 <div layout="row" flex>
   <!-- Sidebar -->
-  <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
-    <div class="col-md-2">
-      <!--Search bar-->
+  <md-sidenav layout="column" class="md-padding md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
+    <!-- Search bar -->
+    <div layout>
       <!-- <input ng-model="query" class="searchbar"> -->
       <md-input-container flex>
         <label>search...</label>
-        <input ng-model="query" class="searchbar">
+        <input ng-model="query" id="searchbar">
       </md-input-container>
     </div>
-
-    <div layout class="filter">
+    <!-- Container for all the filters -->
+    <div layout class="filter" layout-wrap>
       <!-- Size Rating -->
       <div flex="30" layout layout-align="center center">
         <span class="md-body-1">size</span>
       </div>
-      <md-slider flex md-discrete ng-model="rating1" step="1" min="1" max="5" aria-label="rating">
-      </md-slider>
-    </div>
-    <div layout class="filter">
+      <div flex="70">
+        <md-slider md-discrete ng-model="rating1" step="1" min="1" max="5" aria-label="rating">
+        </md-slider>
+      </div>
       <!-- Satisfaction Rating -->
       <div flex="30" layout layout-align="center center">
         <span class="md-body-1">satisfaction</span>
       </div>
-      <md-slider flex md-discrete ng-model="rating2" step="1" min="1" max="5" aria-label="rating">
-      </md-slider>
-    </div>
-    <div layout class="filter">
-      <!-- Wages Rating -->
+      <div flex="70">
+        <md-slider flex md-discrete ng-model="rating2" step="1" min="1" max="5" aria-label="rating">
+        </md-slider>
+      </div>
+     <!-- Wages Rating -->
       <div flex="30" layout layout-align="center center">
         <span class="md-body-1">wages</span>
       </div>
-      <md-slider flex  md-discrete ng-model="rating3" step="1" min="1" max="5" aria-label="rating">
-      </md-slider>
+      <div flex="70">
+        <md-slider flex  md-discrete ng-model="rating3" step="1" min="1" max="5" aria-label="rating">
+        </md-slider>
+      </div>
     </div>
+    <md-divider id="sidebar-divider"></md-divider>
+    <md-content layout id="sidebar-display" class="md-margin md-padding">
+      <div layout layout-align="start center" id="factory-display" layout-wrap>
+        <!-- Name and score -->
+        <div flex="70" layout class="md-title" id="factory-name"></div>
+        <div flex="30" layout layout-align="end" class="md-title">
+          <span id="factory-score"></span>/10
+        </div>
+        <!-- Pictures -->
+        <div flex="100" layout layout-padding id="factory-pictures" layout-align="center center">
+          <div class="md-caption">
+           <!-- TODO: check out grid list on Angular Materials for displaying pictures-->
+          </div>
+        </div>
+        <!-- Size -->
+        <div flex="70" layout layout-align="start" class="md-subhead">size</div>
+        <div flex="30" layout layout-align="end" class="md-body-1" id="factory-size"></div>
 
-    <ul class="data-ctrl">
-      <li ng-repeat="i in items | searchFor:query">
-        <p>{{i.name}}</p>
-        <p>{{i.location}}</p>
-        <p>{{i.website}}</p>
-        <p>{{i.numWorkers}}</p>
-      </li>
-    </ul>
+        <!-- Wages -->
+        <div flex="70" layout layout-align="start" class="md-subhead">wages</div>
+        <div flex="30" layout layout-align="end" class="md-body-1" id="factory-wages"></div>
+
+        <!-- Satisfaction -->
+        <div flex="70" layout layout-align="start" class="md-subhead">satisfaction</div>
+        <div flex="30" layout layout-align="end" class="md-body-1" id="factory-satisfaction"></div>
+
+        <!-- Safety -->
+        <div flex="70" layout layout-align="start" class="md-subhead">safety</div>
+        <div flex="30" layout layout-align="end" class="md-body-1" id="factory-safety">
+          <!-- TODO: some sort of checkbox for the different safety criteria? -->
+        </div>
+      </div>
+    </md-content>
   </md-sidenav>
 
   <!-- Main page content -->
@@ -68,6 +94,7 @@
   </md-content>
   </div>
 </div>
+
 <!-- Angular Material Dependencies -->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
