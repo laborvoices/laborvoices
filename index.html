@@ -55,33 +55,33 @@
     </div>
     <md-divider id="sidebar-divider"></md-divider>
     <md-content layout id="sidebar-display" class="md-margin md-padding">
-      <div layout layout-align="start center" id="factory-display" layout-wrap>
+      <div layout layout-align="start center" id="group-display" layout-wrap>
         <!-- Name and score -->
-        <div flex="70" layout class="md-title" id="factory-name"></div>
+        <div flex="70" layout class="md-title" id="group-name"></div>
         <div flex="30" layout layout-align="end" class="md-title">
-          <span id="factory-score"></span>/10
+          <span id="group-score"></span>/10
         </div>
         <!-- Pictures -->
-        <div flex="100" layout layout-padding id="factory-pictures" layout-align="center center">
+        <div flex="100" layout layout-padding id="group-pictures" layout-align="center center">
           <div class="md-caption">
            <!-- TODO: check out grid list on Angular Materials for displaying pictures-->
           </div>
         </div>
         <!-- Size -->
         <div flex="70" layout layout-align="start" class="md-subhead">size</div>
-        <div flex="30" layout layout-align="end" class="md-body-1" id="factory-size"></div>
+        <div flex="30" layout layout-align="end" class="md-body-1" id="group-size"></div>
 
         <!-- Wages -->
         <div flex="70" layout layout-align="start" class="md-subhead">wages</div>
-        <div flex="30" layout layout-align="end" class="md-body-1" id="factory-wages"></div>
+        <div flex="30" layout layout-align="end" class="md-body-1" id="group-wages"></div>
 
         <!-- Satisfaction -->
-        <div flex="70" layout layout-align="start" class="md-subhead">satisfaction</div>
-        <div flex="30" layout layout-align="end" class="md-body-1" id="factory-satisfaction"></div>
+        <div flex="70" layout layout-align="start" class="md-subhead">worker recommendation</div>
+        <div flex="30" layout layout-align="end" class="md-body-1" id="group-recommendation"></div>
 
         <!-- Safety -->
-        <div flex="70" layout layout-align="start" class="md-subhead">safety</div>
-        <div flex="30" layout layout-align="end" class="md-body-1" id="factory-safety">
+        <div flex="70" layout layout-align="start" class="md-subhead">fire safety</div>
+        <div flex="30" layout layout-align="end" class="md-body-1" id="group-fire-safety">
           <!-- TODO: some sort of checkbox for the different safety criteria? -->
         </div>
       </div>
@@ -102,6 +102,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.js"></script>
 <script src="laborvoices.js"></script>
+<script src="jquery-1.11.3.min.js"></script>
 <script async defer
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA99SeuHN61mrAF-HhLOBFscR9JKeDKUmE&callback=initMap">
 </script>
