@@ -122,7 +122,7 @@ recSlider.noUiSlider.on('update', function ( values, handle ) {
 var wagesSlider = document.getElementById('slider-wages');
 
 noUiSlider.create(wagesSlider, {
-  start: [ 1, 8 ],
+  start: [ 3, 9 ],
   connect: true,
   range: {
     'min': [  0 ],
@@ -145,7 +145,7 @@ wagesSlider.noUiSlider.on('update', function ( values, handle ) {
 var laborSlider = document.getElementById('slider-labor');
 
 noUiSlider.create(laborSlider, {
-  start: [ 1, 8 ],
+  start: [ 0, 7 ],
   connect: true,
   range: {
     'min': [  0 ],

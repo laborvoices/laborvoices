@@ -26,13 +26,18 @@ md-sidenav.md-closed.md-locked-open-add-active {
   background-color: #eee;
 }
 
+.slider-label {
+  margin-top: 40px;
+}
+
 .rec-rating , .wages-rating, .labor-rating{
   width: 75%;
   margin-left: 100px;
-  padding-bottom: 30px;
+  margin-top: -10px;
+  margin-bottom: 30px;
 }
 .value:before, .value {
   content: "Value: ";
-  font: 12px Helvetica Neue;
+  font: 10px Helvetica Neue;
   padding-right: 5px;
 }
