@@ -1,6 +1,6 @@
 // mock json data
 var data = {
-  "factories": [ 
+  "factories": [
     { "name": "Friends Stylewear Ltd.",
       "loc": {
         "address": " Plot # 411, Majukhan, Harbaid, Pubail, Gazipu Sadar, Majukhan Pubail, Bangladesh",
@@ -9,7 +9,7 @@ var data = {
           "lng": 90.468480
         }
       },
-      "phone": "9816611", 
+      "phone": "9816611",
       "website": "http://friendsstylewear.com/",
       "numWorkers": null,
       "isTier1OrTier2": false,
@@ -22,7 +22,7 @@ var data = {
         "monthlyWage": 3000,
         "workerRecommendation": -0.1
       }
-    },  
+    },
     { "name": "FGS Denim Wear Ltd",
       "loc": {
         "address": "FGS Denim Wear Limited, Kathgora Bazar, Zirabo, Ashulia, Dhaka, Bangladesh",
@@ -31,7 +31,7 @@ var data = {
           "lng": 90.298047
         }
       },
-      "phone": "088-02-8921450", 
+      "phone": "088-02-8921450",
       "website": "http://www.fashionglobe-bd.com/denim.php",
       "numWorkers": 950,
       "isTier1OrTier2": true,
@@ -53,7 +53,7 @@ var data = {
           "lng": 90.305042
         }
       },
-      "phone": "7709124", 
+      "phone": "7709124",
       "website": "http://www.fashionglobe-bd.com/denim.php",
       "numWorkers": 2100,
       "isTier1OrTier2": true,
@@ -95,6 +95,76 @@ function initMap() {
   });
 }
 
+// Worker Recommendation Slider
+var recSlider = document.getElementById('slider-rec');
+
+noUiSlider.create(recSlider, {
+  start: [ 1, 8 ],
+  connect: true,
+  range: {
+    'min': [  0 ],
+    'max': [ 10 ]
+  }
+});
+
+var recMin = document.getElementById('slider-rec-min'),
+    recMax = document.getElementById('slider-rec-max');
+
+recSlider.noUiSlider.on('update', function ( values, handle ) {
+  if ( handle ) {
+    recMax.innerHTML = values[handle];
+  } else {
+    recMin.innerHTML = values[handle];
+  }
+});
+
+// Wages Slider
+var wagesSlider = document.getElementById('slider-wages');
+
+noUiSlider.create(wagesSlider, {
+  start: [ 3, 9 ],
+  connect: true,
+  range: {
+    'min': [  0 ],
+    'max': [ 10 ]
+  }
+});
+
+var wagesMin = document.getElementById('slider-wages-min'),
+    wagesMax = document.getElementById('slider-wages-max');
+
+wagesSlider.noUiSlider.on('update', function ( values, handle ) {
+  if ( handle ) {
+    wagesMax.innerHTML = values[handle];
+  } else {
+    wagesMin.innerHTML = values[handle];
+  }
+});
+
+// Child Labor Slider
+var laborSlider = document.getElementById('slider-labor');
+
+noUiSlider.create(laborSlider, {
+  start: [ 0, 7 ],
+  connect: true,
+  range: {
+    'min': [  0 ],
+    'max': [ 10 ]
+  }
+});
+
+var laborMin = document.getElementById('slider-labor-min'),
+    laborMax = document.getElementById('slider-labor-max');
+
+laborSlider.noUiSlider.on('update', function ( values, handle ) {
+  if ( handle ) {
+    laborMax.innerHTML = values[handle];
+  } else {
+    laborMin.innerHTML = values[handle];
+  }
+});
+
+
 function displayFactoryPictures(pictureDiv, factory) {
 
 }
@@ -116,9 +186,9 @@ function displayFactoryInfo(factory) {
   document.getElementById("factory-name").innerHTML = factory.name;
   document.getElementById("factory-score").innerHTML = getScore(factory);
   displayFactoryPictures(document.getElementById("factory-pictures"), factory)
-  document.getElementById("factory-size").innerHTML = 
+  document.getElementById("factory-size").innerHTML =
     factory.numWorkers ? factory.numWorkers : "UNKNOWN";
-  document.getElementById("factory-satisfaction").innerHTML = 
+  document.getElementById("factory-satisfaction").innerHTML =
     ratings.workerRecommendation ? ratings.workerRecommendation : "UNKNOWN";
   document.getElementById("factory-wages").innerHTML =
     ratings.monthlyWage ? ratings.monthlyWage : "UNKNOWN";
