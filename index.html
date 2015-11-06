@@ -28,6 +28,9 @@
         <input ng-model="query" id="searchbar">
       </md-input-container>
     </div>
+    <li ng-repeat="i in items | searchFor:query">
+    </li>
+
     <!-- Container for all the filters -->
     <div layout class="filter" layout-wrap>
       <div flex="30" layout layout-align="center center">
