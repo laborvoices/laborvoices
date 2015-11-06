@@ -1,75 +1,3 @@
-// mock json data
-// var data = {
-//   "factories": [ 
-//     { "name": "Friends Stylewear Ltd.",
-//       "loc": {
-//         "address": " Plot # 411, Majukhan, Harbaid, Pubail, Gazipu Sadar, Majukhan Pubail, Bangladesh",
-//         "coordinates": {
-//           "lat": 23.937509,
-//           "lng": 90.468480
-//         }
-//       },
-//       "phone": "9816611", 
-//       "website": "http://friendsstylewear.com/",
-//       "numWorkers": null,
-//       "isTier1OrTier2": false,
-//       "isTier3": true,
-//       "ratings": {
-//         "childAbuse": false,
-//         "cleanliness": 3.2,
-//         "fireSafety": true,
-//         "freedomOfAssociation": 1,
-//         "monthlyWage": 3000,
-//         "workerRecommendation": -0.1
-//       }
-//     },  
-//     { "name": "FGS Denim Wear Ltd",
-//       "loc": {
-//         "address": "FGS Denim Wear Limited, Kathgora Bazar, Zirabo, Ashulia, Dhaka, Bangladesh",
-//         "coordinates": {
-//           "lat": 23.912051,
-//           "lng": 90.298047
-//         }
-//       },
-//       "phone": "088-02-8921450", 
-//       "website": "http://www.fashionglobe-bd.com/denim.php",
-//       "numWorkers": 950,
-//       "isTier1OrTier2": true,
-//       "isTier3": false,
-//       "ratings": {
-//         "childAbuse": true,
-//         "cleanliness": 3.5,
-//         "fireSafety": true,
-//         "freedomOfAssociation": 3,
-//         "monthlyWage": 3542,
-//         "workerRecommendation": 0.5
-//       }
-//     },
-//     { "name": "CONTINENTAL GARMENTS IND. (PVT.) LTD.",
-//       "loc": {
-//         "address": "PLOT 8, WARD 2, BLOCK B, DEWAN IDRIS ROAD, BORA RANGAMATIA, DHAKA, BANGLADESH",
-//         "coordinates": {
-//           "lat": 23.911678,
-//           "lng": 90.305042
-//         }
-//       },
-//       "phone": "7709124", 
-//       "website": "http://www.fashionglobe-bd.com/denim.php",
-//       "numWorkers": 2100,
-//       "isTier1OrTier2": true,
-//       "isTier3": false,
-//       "ratings": {
-//         "childAbuse": false,
-//         "cleanliness": 3.0,
-//         "fireSafety": false,
-//         "freedomOfAssociation": 2,
-//         "monthlyWage": 4000,
-//         "workerRecommendation": 0.5
-//       }
-//     }
-//   ]
-// }
-
 var map;
 function initMap() {
   console.log("Initializing map");
@@ -100,12 +28,9 @@ function displayFactoryPictures(pictureDiv, factory) {
 
 }
 
+// default overall score of 5 for now.
 function getScore(factory) {
   return 5.0;
-}
-
-function getSafety(factory) {
-  return "UNKNOWN";
 }
 
 var scoresEnum = Object.freeze({WORKER_REC: 0, WAGES: 1, CHILD_LABOR: 2, FIRE_SAFETY: 3});
@@ -139,24 +64,19 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', function($scope, $mdSidenav){
     $mdSidenav(menuId).toggle();
   };
 
-  var laborvoicesAPI = "http://lv-api.herokuapp.com/groups";
-  $.ajax({
-    type: 'GET',
-    url: 'http://lv-api.herokuapp.com/groups',
-    contentType: 'text/plain',
-    xhrFields: {
-      withCredentials: false
-    },
-    headers: {},
-    success: function(json) {
-      console.log(json);
-      jsonData = json;
-      initializeMarkers(jsonData);
-    },
-    error: function() {
-      console.log("json request failed");
-      jsonData = staticData;
-      initializeMarkers(jsonData);
-    }
+  var jqxhr = $.getJSON("http://lv-api.herokuapp.com/groups", function() {
+    console.log("request successfully sent");
+  })
+  .done(function(json) {
+    console.log("response succesfully received");
+    jsonData = json;
+    initializeMarkers(jsonData);
+  })
+  .fail(function() {
+    console.log("json request failed, using static data");
+    jsonData = staticData;
+    initializeMarkers(jsonData);
+  })
+  .always(function() {
   });
 }]);
