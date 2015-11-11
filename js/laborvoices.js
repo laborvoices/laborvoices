@@ -89,9 +89,16 @@ function initializeMarkers(data) {
       title: group.name
     })
 
+    var contentString = '<div>Testing</div>';
+
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    })
+
     marker.addListener('click', function() {
       map.panTo(marker.getPosition());
-      displayFactoryInfo(group);
+      //displayFactoryInfo(group);
+      infowindow.open(map, marker);
       // TODO: blur out the irrelevant parts of the map?
     })
     markerMap[group.name] = marker;
@@ -188,9 +195,9 @@ function displayFactoryInfo(group) {
   document.getElementById("group-name").innerHTML = group.name;
   document.getElementById("group-score").innerHTML = getScore(group);
   displayFactoryPictures(document.getElementById("group-pictures"), group)
-  document.getElementById("group-size").innerHTML = 
+  document.getElementById("group-size").innerHTML =
     group.total_workers ? group.total_workers : "UNKNOWN";
-  document.getElementById("group-recommendation").innerHTML = 
+  document.getElementById("group-recommendation").innerHTML =
     scores[scoresEnum.WORKER_REC]["score"][0]["value"] ? scores[scoresEnum.WORKER_REC]["score"][0]["value"] : "UNKNOWN";
   document.getElementById("group-wages").innerHTML =
     scores[scoresEnum.WAGES]["score"][0]["value"] ? scores[scoresEnum.WAGES]["score"][0]["value"] : "UNKNOWN";
@@ -208,7 +215,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', '$http', function($scope, $md
     $mdSidenav(menuId).toggle();
   };
 
-  // API call 
+  // API call
   var jqxhr = $.getJSON("http://lv-api.herokuapp.com/groups", function() {
     console.log("request successfully sent");
   })
@@ -245,7 +252,7 @@ app.filter('searchFor', function(){
           marker.setVisible(false);
         }
       });
-     } 
+     }
   };
 });
 

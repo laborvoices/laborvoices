@@ -62,11 +62,10 @@
 	height: 2px;
 }
 .noUi-horizontal .noUi-handle {
-	width: 18px;
+	width: 8px;
 	height: 18px;
-	left: -9px;
+	left: -4px;
 	top: -8px;
-	border-radius: 12px;
 }
 .noUi-vertical {
 	width: 18px;
