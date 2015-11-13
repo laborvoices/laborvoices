@@ -103,7 +103,26 @@ function initializeMarkers(data) {
     })
     markerMap[group.name] = marker;
   })
+  resizeMap();
 }
+
+function resizeMap() {
+  var bounds = new google.maps.LatLngBounds();
+  for (var group in markerMap) {
+    if (markerMap[group].getVisible())
+      bounds.extend(markerMap[group].getPosition());
+  }
+
+  google.maps.event.addListenerOnce(map, 'zoom_changed', function(event) {
+    map.setZoom(map.getZoom() - 1);
+
+    if (this.getZoom() > 15) {
+      this.setZoom(15);
+    }
+  });
+  map.fitBounds(bounds);
+}
+
 
 // Worker Recommendation Slider
 var recSlider = document.getElementById('slider-rec');
@@ -236,23 +255,36 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', '$http', function($scope, $md
 
 app.filter('searchFor', function(){
   return function(arr, query) {
+    var visibilityChanged = false;  // does not redraw map unless needed
     if (!query) {
       for (var key in markerMap) {
         marker = markerMap[key];
-        marker.setVisible(true);
+        if (!marker.getVisible()) { 
+          marker.setVisible(true);
+          visibilityChanged = true;
+        }
       }
     } else {
       query = query.toLowerCase();
       angular.forEach(arr, function(item){
         if (item.name.toLowerCase().indexOf(query) !== -1) {
           marker = markerMap[item.name];
-          marker.setVisible(true);
+          if (!marker.getVisible()) { 
+            marker.setVisible(true);
+            visibilityChanged = true;
+          }
         } else {
           marker = markerMap[item.name];
-          marker.setVisible(false);
+          if (marker.getVisible()) { 
+            marker.setVisible(false);
+            visibilityChanged = true;
+          }        
         }
       });
-     }
+    }
+
+    if (visibilityChanged)
+      resizeMap();
   };
 });
 
