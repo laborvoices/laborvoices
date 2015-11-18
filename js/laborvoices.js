@@ -78,6 +78,29 @@ function initMap() {
     center: {lat: 23.7, lng: 90.35},
     zoom: 8
   });
+
+  var styles = [
+    {
+      stylers: [
+        { hue: "" },
+        { saturation: 10 }
+      ]
+    },{
+      featureType: "road",
+      elementType: "geometry",
+      stylers: [
+        { lightness: 100 },
+        { visibility: "simplified" }
+      ]
+    },{
+      featureType: "road",
+      elementType: "labels",
+      stylers: [
+        { visibility: "off" }
+      ]
+    }
+  ];
+  map.setOptions({styles: styles});
 }
 
 function initializeMarkers(data) {
