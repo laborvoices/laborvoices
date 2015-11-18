@@ -89,19 +89,24 @@ function initializeMarkers(data) {
       title: group.name
     })
 
-    var contentString = '<div>Testing</div>';
+    //var contentString = '';
 
     var infowindow = new google.maps.InfoWindow({
-      content: contentString
+      maxWidth: 200
     })
 
     marker.addListener('click', function() {
       map.panTo(marker.getPosition());
-      //displayFactoryInfo(group);
+      displayFactoryInfo(group);
+      var curContent = document.getElementById("sidebar-display").innerHTML;
+      infowindow.setContent(curContent);
       infowindow.open(map, marker);
       // TODO: blur out the irrelevant parts of the map?
     })
     markerMap[group.name] = marker;
+    google.maps.event.addListener(map, "click", function(event) {
+        infowindow.close();
+    });
   })
   resizeMap();
 }
@@ -174,7 +179,7 @@ wagesSlider.noUiSlider.on('update', function ( values, handle ) {
 var laborSlider = document.getElementById('slider-labor');
 
 noUiSlider.create(laborSlider, {
-  start: [ 0, 7 ],
+  start: [ 2.5, 7 ],
   connect: true,
   range: {
     'min': [  0 ],
@@ -259,7 +264,7 @@ app.filter('searchFor', function(){
     if (!query) {
       for (var key in markerMap) {
         marker = markerMap[key];
-        if (!marker.getVisible()) { 
+        if (!marker.getVisible()) {
           marker.setVisible(true);
           visibilityChanged = true;
         }
@@ -269,16 +274,16 @@ app.filter('searchFor', function(){
       angular.forEach(arr, function(item){
         if (item.name.toLowerCase().indexOf(query) !== -1) {
           marker = markerMap[item.name];
-          if (!marker.getVisible()) { 
+          if (!marker.getVisible()) {
             marker.setVisible(true);
             visibilityChanged = true;
           }
         } else {
           marker = markerMap[item.name];
-          if (marker.getVisible()) { 
+          if (marker.getVisible()) {
             marker.setVisible(false);
             visibilityChanged = true;
-          }        
+          }
         }
       });
     }
