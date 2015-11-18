@@ -179,7 +179,7 @@ wagesSlider.noUiSlider.on('update', function ( values, handle ) {
 var laborSlider = document.getElementById('slider-labor');
 
 noUiSlider.create(laborSlider, {
-  start: [ 0, 7 ],
+  start: [ 2.5, 7 ],
   connect: true,
   range: {
     'min': [  0 ],

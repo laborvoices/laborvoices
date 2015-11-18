@@ -9,7 +9,7 @@
 </head>
 <body layout="column" ng-controller="AppCtrl">
   <!-- Header Bar -->
-  <md-toolbar layout="row">
+  <md-toolbar layout="row" md-accent>
     <div class="md-toolbar-tools">
       <md-button ng-click="toggleSidenav('left')" hide-gt-sm class="md-icon-button">
       <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg"></md-icon>
@@ -34,6 +34,9 @@
     <div layout class="filter" layout-wrap>
       <div flex="30" layout layout-align="center center">
         <span class="md-body-1">Worker Rec</span>
+        <md-tooltip md-direction="top">
+          Workers state how likely they are to recommend the factory to a friend
+        </md-tooltip>
       </div>
       <div flex="70" class="rec-rating">
         <div id="slider-rec"></div>
@@ -43,6 +46,9 @@
 
       <div flex="30" layout layout-align="center center">
         <span class="md-body-1">Wages</span>
+        <md-tooltip md-direction="top">
+          Workers rate fairness of wages
+        </md-tooltip>
       </div>
       <div flex="70" class="wages-rating">
         <div id="slider-wages"></div>
@@ -52,6 +58,9 @@
 
       <div flex="30" layout layout-align="center center">
         <span class="md-body-1">Child Labor</span>
+        <md-tooltip md-direction="top">
+          Workers report on status of child labor
+        </md-tooltip>
       </div>
       <div flex="70" class="labor-rating">
         <div id="slider-labor"></div>
