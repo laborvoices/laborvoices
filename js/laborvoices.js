@@ -113,19 +113,36 @@ function initMap() {
   });
 }
 
+function getIcon(score) {
+  var prefix = 'images/map_markers/'
+  if (score <= 3) {
+    return prefix + 'red.png'
+  } else if (score <= 6) {
+    return prefix + 'yellow.png'
+  } else {
+    return prefix + 'green.png'
+  }
+}
+
+
 function initializeMarkers(data) {
   data.groups.forEach(function(group) {
+    // Get marker based on score
+    var score = getScore(group);
+    var markerIcon = getIcon(score);
+
     var marker = new google.maps.Marker({
       position: {lat: group.lat, lng: group.long},
       map: map,
-      title: group.name
-    })
+      title: group.name,
+      icon: markerIcon
+    });
 
     //var contentString = '';
 
     var infowindow = new google.maps.InfoWindow({
       maxWidth: 200
-    })
+    });
 
     marker.addListener('click', function() {
       map.panTo(marker.getPosition());
@@ -134,7 +151,8 @@ function initializeMarkers(data) {
       infowindow.setContent(curContent);
       infowindow.open(map, marker);
       // TODO: blur out the irrelevant parts of the map?
-    })
+    });
+
     markerMap[group.name] = marker;
     google.maps.event.addListener(map, "click", function(event) {
         infowindow.close();
@@ -264,7 +282,10 @@ function displayFactoryPictures(pictureDiv, factory) {
 
 // default overall score for each factory is 5.0 for now
 function getScore(factory) {
-  return 5.0;
+  // TODO:
+  scores = factory.scores;
+  groupRecommendation = scores[scoresEnum.WORKER_REC]["score"][0]["value"]*2;
+  return groupRecommendation;
 }
 
 var scoresEnum = Object.freeze({WORKER_REC: 0, WAGES: 1, CHILD_LABOR: 2, FIRE_SAFETY: 3});
