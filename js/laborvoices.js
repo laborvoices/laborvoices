@@ -121,21 +121,49 @@ function initializeMarkers(data) {
       title: group.name
     })
 
+    //var contentString = '';
+
+    var infowindow = new google.maps.InfoWindow({
+      maxWidth: 200
+    })
+
     marker.addListener('click', function() {
       map.panTo(marker.getPosition());
       displayFactoryInfo(group);
+      var curContent = document.getElementById("sidebar-display").innerHTML;
+      infowindow.setContent(curContent);
+      infowindow.open(map, marker);
       // TODO: blur out the irrelevant parts of the map?
     })
     markerMap[group.name] = marker;
+    google.maps.event.addListener(map, "click", function(event) {
+        infowindow.close();
+    });
   })
+  resizeMap();
+}
+
+function resizeMap() {
+  var bounds = new google.maps.LatLngBounds();
+  for (var group in markerMap) {
+    if (markerMap[group].getVisible())
+      bounds.extend(markerMap[group].getPosition());
+  }
+
+  google.maps.event.addListenerOnce(map, 'zoom_changed', function(event) {
+    map.setZoom(map.getZoom() - 1);
+
+    if (this.getZoom() > 15) {
+      this.setZoom(15);
+    }
+  });
+  map.fitBounds(bounds);
 }
 
 
-
-// Worker Recommendation Slider
 function initializeSliders() {
+  // Worker Recommendation Slider
   var recSlider = document.getElementById('slider-rec');
-
   noUiSlider.create(recSlider, {
     start: [ 1, 5 ],
     connect: true,
@@ -145,10 +173,8 @@ function initializeSliders() {
       'max': [ 5 ]
     }
   });
-
   var recMin = document.getElementById('slider-rec-min'),
   recMax = document.getElementById('slider-rec-max');
-
   recSlider.noUiSlider.on('update', function ( values, handle ) {
     if ( handle ) {
       recMax.innerHTML = values[handle];
@@ -161,7 +187,6 @@ function initializeSliders() {
 
   // Wages Slider
   var wagesSlider = document.getElementById('slider-wages');
-
   noUiSlider.create(wagesSlider, {
     start: [ 3, 5 ],
     connect: true,
@@ -171,10 +196,8 @@ function initializeSliders() {
       'max': [ 5 ]
     }
   });
-
   var wagesMin = document.getElementById('slider-wages-min'),
   wagesMax = document.getElementById('slider-wages-max');
-
   wagesSlider.noUiSlider.on('update', function ( values, handle ) {
     if ( handle ) {
       wagesMax.innerHTML = values[handle];
@@ -184,10 +207,9 @@ function initializeSliders() {
     filterBySliders(wagesMin.innerHTML, wagesMax.innerHTML, "wages");
   });
 
-  // Fire Safety Slider
-  var fireSlider = document.getElementById('slider-fire');
-
-  noUiSlider.create(fireSlider, {
+  // Child LABOR Slider
+  var laborSlider = document.getElementById('slider-labor');
+  noUiSlider.create(laborSlider, {
     start: [ 1, 3 ],
     connect: true,
     step: 1,
@@ -196,18 +218,15 @@ function initializeSliders() {
       'max': [ 5 ]
     }
   });
-
-  var fireMin = document.getElementById('slider-fire-min'),
-  fireMax = document.getElementById('slider-fire-max');
-
-  fireSlider.noUiSlider.on('update', function ( values, handle ) {
+  var laborMin = document.getElementById('slider-labor-min'),
+  laborMax = document.getElementById('slider-labor-max');
+  laborSlider.noUiSlider.on('update', function ( values, handle ) {
     if ( handle ) {
-      fireMax.innerHTML = values[handle];
+      laborMax.innerHTML = values[handle];
     } else {
-      fireMin.innerHTML = values[handle];
+      laborMin.innerHTML = values[handle];
     }
-    filterBySliders(fireMin.innerHTML, fireMax.innerHTML, "fire");
-
+    filterBySliders(laborMin.innerHTML, laborMax.innerHTML, "labor");
   });
 }
 
@@ -219,20 +238,15 @@ function filterBySliders(min, max, category) {
   if (category == "wages") {
     filter = 1;
   }
+  if (category == "labor") {
+    filter = 2;
+  }
   if (category == "fire") {
     filter = 3;
   }
 
   jsonData.groups.forEach(function(item) {
-  //for (var item in jsonData.groups) {
-    console.log(item);
-    //console.log(item.groups);
-    console.log(item.scores);
-
     val = item.scores[filter].score[0].value;
-    console.log(filter);
-    console.log(val);
-    console.log(item.name);
     if (val >= min && val <= max) {
       marker = markerMap[item.name]
       marker.setVisible(true);
@@ -264,9 +278,9 @@ function displayFactoryInfo(group) {
   document.getElementById("group-name").innerHTML = group.name;
   document.getElementById("group-score").innerHTML = getScore(group);
   displayFactoryPictures(document.getElementById("group-pictures"), group)
-  document.getElementById("group-size").innerHTML = 
+  document.getElementById("group-size").innerHTML =
     group.total_workers ? group.total_workers : "UNKNOWN";
-  document.getElementById("group-recommendation").innerHTML = 
+  document.getElementById("group-recommendation").innerHTML =
     scores[scoresEnum.WORKER_REC]["score"][0]["value"] ? scores[scoresEnum.WORKER_REC]["score"][0]["value"] : "UNKNOWN";
   document.getElementById("group-wages").innerHTML =
     scores[scoresEnum.WAGES]["score"][0]["value"] ? scores[scoresEnum.WAGES]["score"][0]["value"] : "UNKNOWN";
@@ -276,23 +290,36 @@ function displayFactoryInfo(group) {
 
 app.filter('searchFor', function(){
   return function(arr, query) {
+    var visibilityChanged = false;  // does not redraw map unless needed
     if (!query) {
       for (var key in markerMap) {
         marker = markerMap[key];
-        marker.setVisible(true);
+        if (!marker.getVisible()) {
+          marker.setVisible(true);
+          visibilityChanged = true;
+        }
       }
     } else {
       query = query.toLowerCase();
       angular.forEach(arr, function(item){
         if (item.name.toLowerCase().indexOf(query) !== -1) {
           marker = markerMap[item.name];
-          marker.setVisible(true);
+          if (!marker.getVisible()) {
+            marker.setVisible(true);
+            visibilityChanged = true;
+          }
         } else {
           marker = markerMap[item.name];
-          marker.setVisible(false);
+          if (marker.getVisible()) {
+            marker.setVisible(false);
+            visibilityChanged = true;
+          }
         }
       });
-     } 
+    }
+
+    if (visibilityChanged)
+      resizeMap();
   };
 });
 

@@ -9,12 +9,12 @@
 </head>
 <body layout="column" ng-controller="AppCtrl">
   <!-- Header Bar -->
-  <md-toolbar layout="row">
+  <md-toolbar layout="row" md-accent>
     <div class="md-toolbar-tools">
       <md-button ng-click="toggleSidenav('left')" hide-gt-sm class="md-icon-button">
       <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg"></md-icon>
       </md-button>
-      <h1>Laborvoices</h1>
+      <h1>LaborVoices</h1>
     </div>
   </md-toolbar>
 <div layout="row" flex>
@@ -22,7 +22,6 @@
   <md-sidenav layout="column" class="md-padding md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
     <!-- Search bar -->
     <div layout>
-      <!-- <input ng-model="query" class="searchbar"> -->
       <md-input-container flex>
         <label>search...</label>
         <input ng-model="query" id="searchbar">
@@ -34,18 +33,22 @@
     <!-- Container for all the filters -->
     <div layout class="filter" layout-wrap>
       <div flex="30" layout layout-align="center center">
-        <span class="md-body-1">worker rec</span>
+        <span class="md-body-1">Worker Rec</span>
+        <md-tooltip md-direction="top">
+          Workers state how likely they are to recommend the factory to a friend
+        </md-tooltip>
       </div>
-      <!-- <span class="md-body-1">worker rec</span> -->
       <div flex="70" class="rec-rating">
-        <!-- <span class="md-body-1">worker rec</span> -->
         <div id="slider-rec"></div>
         <span class="value" id="slider-rec-min"></span>
         <span class="value" id="slider-rec-max"></span>
       </div>
 
       <div flex="30" layout layout-align="center center">
-        <span class="md-body-1">wages</span>
+        <span class="md-body-1">Wages</span>
+        <md-tooltip md-direction="top">
+          Workers rate fairness of wages
+        </md-tooltip>
       </div>
       <div flex="70" class="wages-rating">
         <div id="slider-wages"></div>
@@ -54,12 +57,15 @@
       </div>
 
       <div flex="30" layout layout-align="center center">
-        <span class="md-body-1">fire safety</span>
+        <span class="md-body-1">Child Labor</span>
+        <md-tooltip md-direction="top">
+          Workers report on status of child labor
+        </md-tooltip>
       </div>
-      <div flex="70" class="fire-rating">
-        <div id="slider-fire"></div>
-        <span class="value" id="slider-fire-min"></span>
-        <span class="value" id="slider-fire-max"></span>
+      <div flex="70" class="labor-rating">
+        <div id="slider-labor"></div>
+        <span class="value" id="slider-labor-min"></span>
+        <span class="value" id="slider-labor-max"></span>
       </div>
       <!-- Size Rating -->
       <!-- <div flex="30" layout layout-align="center center">
