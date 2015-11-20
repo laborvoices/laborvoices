@@ -70,6 +70,39 @@
 // ]
 // }
 
+var jsonData = {"groups":[{"id":1,"name":"Factory A","conversations_count":14,"users_count":10,"total_workers":30,"lat":17.9468568801104,"long":99.0197359730027,"scores":[{"category":"Worker Recommendation","score":[{"id":1,"value":3.0,"category_id":1,"group_id":1,"created_at":"2015-10-30T17:47:29.445Z","updated_at":"2015-10-30T17:47:29.732Z"}]},{"category":"Wages","score":[{"id":2,"value":1.0,"category_id":2,"group_id":1,"created_at":"2015-10-30T17:47:29.458Z","updated_at":"2015-10-30T17:47:29.741Z"}]},{"category":"Child Labor","score":[{"id":3,"value":2.0,"category_id":3,"group_id":1,"created_at":"2015-10-30T17:47:29.469Z","updated_at":"2015-10-30T17:47:29.745Z"}]},{"category":"Fire Safety","score":[{"id":4,"value":1.0,"category_id":4,"group_id":1,"created_at":"2015-10-30T17:47:29.480Z","updated_at":"2015-10-30T17:47:29.755Z"}]}],"created_at":"2015-10-30T17:47:29.727Z","updated_at":"2015-10-30T17:47:29.727Z"},{"id":2,"name":"Factory B","conversations_count":130,"users_count":100,"total_workers":150,"lat":18.8729892480271,"long":85.5507705400325,"scores":[{"category":"Worker Recommendation","score":[{"id":5,"value":4.0,"category_id":1,"group_id":2,"created_at":"2015-10-30T17:47:29.491Z","updated_at":"2015-10-30T17:47:29.773Z"}]},{"category":"Wages","score":[{"id":6,"value":1.0,"category_id":2,"group_id":2,"created_at":"2015-10-30T17:47:29.503Z","updated_at":"2015-10-30T17:47:29.777Z"}]},{"category":"Child Labor","score":[{"id":7,"value":3.0,"category_id":3,"group_id":2,"created_at":"2015-10-30T17:47:29.518Z","updated_at":"2015-10-30T17:47:29.780Z"}]},{"category":"Fire Safety","score":[{"id":8,"value":3.0,"category_id":4,"group_id":2,"created_at":"2015-10-30T17:47:29.530Z","updated_at":"2015-10-30T17:47:29.784Z"}]}],"created_at":"2015-10-30T17:47:29.770Z","updated_at":"2015-10-30T17:47:29.770Z"},{"id":3,"name":"Factory C","conversations_count":93,"users_count":45,"total_workers":120,"lat":17.987452634461,"long":84.6677053764018,"scores":[{"category":"Worker Recommendation","score":[{"id":9,"value":3.0,"category_id":1,"group_id":3,"created_at":"2015-10-30T17:47:29.544Z","updated_at":"2015-10-30T17:47:29.816Z"}]},{"category":"Wages","score":[{"id":10,"value":4.0,"category_id":2,"group_id":3,"created_at":"2015-10-30T17:47:29.558Z","updated_at":"2015-10-30T17:47:29.827Z"}]},{"category":"Child Labor","score":[{"id":11,"value":5.0,"category_id":3,"group_id":3,"created_at":"2015-10-30T17:47:29.568Z","updated_at":"2015-10-30T17:47:29.833Z"}]},{"category":"Fire Safety","score":[{"id":12,"value":1.0,"category_id":4,"group_id":3,"created_at":"2015-10-30T17:47:29.581Z","updated_at":"2015-10-30T17:47:29.837Z"}]}],"created_at":"2015-10-30T17:47:29.806Z","updated_at":"2015-10-30T17:47:29.806Z"},{"id":4,"name":"Factory D","conversations_count":229,"users_count":203,"total_workers":400,"lat":26.8906529352525,"long":84.8116942126579,"scores":[{"category":"Worker Recommendation","score":[{"id":13,"value":1.0,"category_id":1,"group_id":4,"created_at":"2015-10-30T17:47:29.599Z","updated_at":"2015-10-30T17:47:29.850Z"}]},{"category":"Wages","score":[{"id":14,"value":4.0,"category_id":2,"group_id":4,"created_at":"2015-10-30T17:47:29.615Z","updated_at":"2015-10-30T17:47:29.854Z"}]},{"category":"Child Labor","score":[{"id":15,"value":2.0,"category_id":3,"group_id":4,"created_at":"2015-10-30T17:47:29.631Z","updated_at":"2015-10-30T17:47:29.859Z"}]},{"category":"Fire Safety","score":[{"id":16,"value":5.0,"category_id":4,"group_id":4,"created_at":"2015-10-30T17:47:29.639Z","updated_at":"2015-10-30T17:47:29.864Z"}]}],"created_at":"2015-10-30T17:47:29.847Z","updated_at":"2015-10-30T17:47:29.847Z"},{"id":5,"name":"Factory E","conversations_count":23,"users_count":18,"total_workers":50,"lat":25.1265204544061,"long":86.2992781625552,"scores":[{"category":"Worker Recommendation","score":[{"id":17,"value":1.0,"category_id":1,"group_id":5,"created_at":"2015-10-30T17:47:29.659Z","updated_at":"2015-10-30T17:47:29.889Z"}]},{"category":"Wages","score":[{"id":18,"value":4.0,"category_id":2,"group_id":5,"created_at":"2015-10-30T17:47:29.667Z","updated_at":"2015-10-30T17:47:29.911Z"}]},{"category":"Child Labor","score":[{"id":19,"value":5.0,"category_id":3,"group_id":5,"created_at":"2015-10-30T17:47:29.673Z","updated_at":"2015-10-30T17:47:29.921Z"}]},{"category":"Fire Safety","score":[{"id":20,"value":3.0,"category_id":4,"group_id":5,"created_at":"2015-10-30T17:47:29.681Z","updated_at":"2015-10-30T17:47:29.925Z"}]}],"created_at":"2015-10-30T17:47:29.882Z","updated_at":"2015-10-30T17:47:29.882Z"}]};
+var staticData = {"groups":[{"id":1,"name":"Factory A","conversations_count":14,"users_count":10,"total_workers":30,"lat":17.9468568801104,"long":99.0197359730027,"scores":[{"category":"Worker Recommendation","score":[{"id":1,"value":3.0,"category_id":1,"group_id":1,"created_at":"2015-10-30T17:47:29.445Z","updated_at":"2015-10-30T17:47:29.732Z"}]},{"category":"Wages","score":[{"id":2,"value":1.0,"category_id":2,"group_id":1,"created_at":"2015-10-30T17:47:29.458Z","updated_at":"2015-10-30T17:47:29.741Z"}]},{"category":"Child Labor","score":[{"id":3,"value":2.0,"category_id":3,"group_id":1,"created_at":"2015-10-30T17:47:29.469Z","updated_at":"2015-10-30T17:47:29.745Z"}]},{"category":"Fire Safety","score":[{"id":4,"value":1.0,"category_id":4,"group_id":1,"created_at":"2015-10-30T17:47:29.480Z","updated_at":"2015-10-30T17:47:29.755Z"}]}],"created_at":"2015-10-30T17:47:29.727Z","updated_at":"2015-10-30T17:47:29.727Z"},{"id":2,"name":"Factory B","conversations_count":130,"users_count":100,"total_workers":150,"lat":18.8729892480271,"long":85.5507705400325,"scores":[{"category":"Worker Recommendation","score":[{"id":5,"value":4.0,"category_id":1,"group_id":2,"created_at":"2015-10-30T17:47:29.491Z","updated_at":"2015-10-30T17:47:29.773Z"}]},{"category":"Wages","score":[{"id":6,"value":1.0,"category_id":2,"group_id":2,"created_at":"2015-10-30T17:47:29.503Z","updated_at":"2015-10-30T17:47:29.777Z"}]},{"category":"Child Labor","score":[{"id":7,"value":3.0,"category_id":3,"group_id":2,"created_at":"2015-10-30T17:47:29.518Z","updated_at":"2015-10-30T17:47:29.780Z"}]},{"category":"Fire Safety","score":[{"id":8,"value":3.0,"category_id":4,"group_id":2,"created_at":"2015-10-30T17:47:29.530Z","updated_at":"2015-10-30T17:47:29.784Z"}]}],"created_at":"2015-10-30T17:47:29.770Z","updated_at":"2015-10-30T17:47:29.770Z"},{"id":3,"name":"Factory C","conversations_count":93,"users_count":45,"total_workers":120,"lat":17.987452634461,"long":84.6677053764018,"scores":[{"category":"Worker Recommendation","score":[{"id":9,"value":3.0,"category_id":1,"group_id":3,"created_at":"2015-10-30T17:47:29.544Z","updated_at":"2015-10-30T17:47:29.816Z"}]},{"category":"Wages","score":[{"id":10,"value":4.0,"category_id":2,"group_id":3,"created_at":"2015-10-30T17:47:29.558Z","updated_at":"2015-10-30T17:47:29.827Z"}]},{"category":"Child Labor","score":[{"id":11,"value":5.0,"category_id":3,"group_id":3,"created_at":"2015-10-30T17:47:29.568Z","updated_at":"2015-10-30T17:47:29.833Z"}]},{"category":"Fire Safety","score":[{"id":12,"value":1.0,"category_id":4,"group_id":3,"created_at":"2015-10-30T17:47:29.581Z","updated_at":"2015-10-30T17:47:29.837Z"}]}],"created_at":"2015-10-30T17:47:29.806Z","updated_at":"2015-10-30T17:47:29.806Z"},{"id":4,"name":"Factory D","conversations_count":229,"users_count":203,"total_workers":400,"lat":26.8906529352525,"long":84.8116942126579,"scores":[{"category":"Worker Recommendation","score":[{"id":13,"value":1.0,"category_id":1,"group_id":4,"created_at":"2015-10-30T17:47:29.599Z","updated_at":"2015-10-30T17:47:29.850Z"}]},{"category":"Wages","score":[{"id":14,"value":4.0,"category_id":2,"group_id":4,"created_at":"2015-10-30T17:47:29.615Z","updated_at":"2015-10-30T17:47:29.854Z"}]},{"category":"Child Labor","score":[{"id":15,"value":2.0,"category_id":3,"group_id":4,"created_at":"2015-10-30T17:47:29.631Z","updated_at":"2015-10-30T17:47:29.859Z"}]},{"category":"Fire Safety","score":[{"id":16,"value":5.0,"category_id":4,"group_id":4,"created_at":"2015-10-30T17:47:29.639Z","updated_at":"2015-10-30T17:47:29.864Z"}]}],"created_at":"2015-10-30T17:47:29.847Z","updated_at":"2015-10-30T17:47:29.847Z"},{"id":5,"name":"Factory E","conversations_count":23,"users_count":18,"total_workers":50,"lat":25.1265204544061,"long":86.2992781625552,"scores":[{"category":"Worker Recommendation","score":[{"id":17,"value":1.0,"category_id":1,"group_id":5,"created_at":"2015-10-30T17:47:29.659Z","updated_at":"2015-10-30T17:47:29.889Z"}]},{"category":"Wages","score":[{"id":18,"value":4.0,"category_id":2,"group_id":5,"created_at":"2015-10-30T17:47:29.667Z","updated_at":"2015-10-30T17:47:29.911Z"}]},{"category":"Child Labor","score":[{"id":19,"value":5.0,"category_id":3,"group_id":5,"created_at":"2015-10-30T17:47:29.673Z","updated_at":"2015-10-30T17:47:29.921Z"}]},{"category":"Fire Safety","score":[{"id":20,"value":3.0,"category_id":4,"group_id":5,"created_at":"2015-10-30T17:47:29.681Z","updated_at":"2015-10-30T17:47:29.925Z"}]}],"created_at":"2015-10-30T17:47:29.882Z","updated_at":"2015-10-30T17:47:29.882Z"}]};
+var app = angular.module('StarterApp', ['ngMaterial']);
+//initializeMarkers(staticData)
+
+
+app.controller('AppCtrl', ['$scope', '$mdSidenav', '$http', function($scope, $mdSidenav, $http){
+  $scope.toggleSidenav = function(menuId) {
+    $mdSidenav(menuId).toggle();
+  };
+
+  // API call 
+  var jqxhr = $.getJSON("http://lv-api.herokuapp.com/groups", function() {
+    console.log("request successfully sent");
+  })
+  .done(function(json) {
+    console.log("response succesfully received");
+    jsonData = json;
+    $scope.items = jsonData.groups;
+    initializeMarkers(jsonData);
+    initializeSliders();
+    console.log(jsonData);
+  })
+  .fail(function() {
+    console.log("json request failed, using static data");
+    jsonData = staticData;
+    initializeMarkers(jsonData);
+    initializeSliders();
+  })
+  .always(function() {
+  });
+}]);
+
 var map;
 var markerMap = {};
 function initMap() {
@@ -104,7 +137,6 @@ function initMap() {
 }
 
 function initializeMarkers(data) {
-  console.log(data);
   data.groups.forEach(function(group) {
     var marker = new google.maps.Marker({
       position: {lat: group.lat, lng: group.long},
@@ -112,19 +144,24 @@ function initializeMarkers(data) {
       title: group.name
     })
 
-    var contentString = '<div>Testing</div>';
+    //var contentString = '';
 
     var infowindow = new google.maps.InfoWindow({
-      content: contentString
+      maxWidth: 200
     })
 
     marker.addListener('click', function() {
       map.panTo(marker.getPosition());
-      //displayFactoryInfo(group);
+      displayFactoryInfo(group);
+      var curContent = document.getElementById("sidebar-display").innerHTML;
+      infowindow.setContent(curContent);
       infowindow.open(map, marker);
       // TODO: blur out the irrelevant parts of the map?
     })
     markerMap[group.name] = marker;
+    google.maps.event.addListener(map, "click", function(event) {
+        infowindow.close();
+    });
   })
   resizeMap();
 }
@@ -147,74 +184,101 @@ function resizeMap() {
 }
 
 
-// Worker Recommendation Slider
-var recSlider = document.getElementById('slider-rec');
+function initializeSliders() {
+  // Worker Recommendation Slider
+  var recSlider = document.getElementById('slider-rec');
+  noUiSlider.create(recSlider, {
+    start: [ 1, 5 ],
+    connect: true,
+    step: 1,
+    range: {
+      'min': [  1 ],
+      'max': [ 5 ]
+    }
+  });
+  var recMin = document.getElementById('slider-rec-min'),
+  recMax = document.getElementById('slider-rec-max');
+  recSlider.noUiSlider.on('update', function ( values, handle ) {
+    if ( handle ) {
+      recMax.innerHTML = values[handle];
+    } else {
+      recMin.innerHTML = values[handle];
+    }
+    filterBySliders(recMin.innerHTML, recMax.innerHTML, "rec");
+  });
 
-noUiSlider.create(recSlider, {
-  start: [ 1, 8 ],
-  connect: true,
-  range: {
-    'min': [  0 ],
-    'max': [ 10 ]
+
+  // Wages Slider
+  var wagesSlider = document.getElementById('slider-wages');
+  noUiSlider.create(wagesSlider, {
+    start: [ 3, 5 ],
+    connect: true,
+    step: 1,
+    range: {
+      'min': [  1 ],
+      'max': [ 5 ]
+    }
+  });
+  var wagesMin = document.getElementById('slider-wages-min'),
+  wagesMax = document.getElementById('slider-wages-max');
+  wagesSlider.noUiSlider.on('update', function ( values, handle ) {
+    if ( handle ) {
+      wagesMax.innerHTML = values[handle];
+    } else {
+      wagesMin.innerHTML = values[handle];
+    }
+    filterBySliders(wagesMin.innerHTML, wagesMax.innerHTML, "wages");
+  });
+
+  // Child LABOR Slider
+  var laborSlider = document.getElementById('slider-labor');
+  noUiSlider.create(laborSlider, {
+    start: [ 1, 3 ],
+    connect: true,
+    step: 1,
+    range: {
+      'min': [  1 ],
+      'max': [ 5 ]
+    }
+  });
+  var laborMin = document.getElementById('slider-labor-min'),
+  laborMax = document.getElementById('slider-labor-max');
+  laborSlider.noUiSlider.on('update', function ( values, handle ) {
+    if ( handle ) {
+      laborMax.innerHTML = values[handle];
+    } else {
+      laborMin.innerHTML = values[handle];
+    }
+    filterBySliders(laborMin.innerHTML, laborMax.innerHTML, "labor");
+  });
+}
+
+function filterBySliders(min, max, category) {
+  filter = 0;
+  if (category == "rec") {
+    filter = 0;
+  } 
+  if (category == "wages") {
+    filter = 1;
   }
-});
-
-var recMin = document.getElementById('slider-rec-min'),
-recMax = document.getElementById('slider-rec-max');
-
-recSlider.noUiSlider.on('update', function ( values, handle ) {
-  if ( handle ) {
-    recMax.innerHTML = values[handle];
-  } else {
-    recMin.innerHTML = values[handle];
+  if (category == "labor") {
+    filter = 2;
   }
-});
-
-// Wages Slider
-var wagesSlider = document.getElementById('slider-wages');
-
-noUiSlider.create(wagesSlider, {
-  start: [ 3, 9 ],
-  connect: true,
-  range: {
-    'min': [  0 ],
-    'max': [ 10 ]
+  if (category == "fire") {
+    filter = 3;
   }
-});
 
-var wagesMin = document.getElementById('slider-wages-min'),
-wagesMax = document.getElementById('slider-wages-max');
-
-wagesSlider.noUiSlider.on('update', function ( values, handle ) {
-  if ( handle ) {
-    wagesMax.innerHTML = values[handle];
-  } else {
-    wagesMin.innerHTML = values[handle];
-  }
-});
-
-// Child Labor Slider
-var laborSlider = document.getElementById('slider-labor');
-
-noUiSlider.create(laborSlider, {
-  start: [ 0, 7 ],
-  connect: true,
-  range: {
-    'min': [  0 ],
-    'max': [ 10 ]
-  }
-});
-
-var laborMin = document.getElementById('slider-labor-min'),
-laborMax = document.getElementById('slider-labor-max');
-
-laborSlider.noUiSlider.on('update', function ( values, handle ) {
-  if ( handle ) {
-    laborMax.innerHTML = values[handle];
-  } else {
-    laborMin.innerHTML = values[handle];
-  }
-});
+  jsonData.groups.forEach(function(item) {
+    val = item.scores[filter].score[0].value;
+    if (val >= min && val <= max) {
+      marker = markerMap[item.name]
+      marker.setVisible(true);
+    } else {
+      marker = markerMap[item.name];
+      marker.setVisible(false);
+    }
+  });
+}
 
 
 function displayFactoryPictures(pictureDiv, factory) {
@@ -247,42 +311,13 @@ function displayFactoryInfo(group) {
     scores[scoresEnum.FIRE_SAFETY]["score"][0]["value"] ? scores[scoresEnum.FIRE_SAFETY]["score"][0]["value"] : "UNKNOWN";
 }
 
-var jsonData;
-var staticData = {"groups":[{"id":1,"name":"Factory A","conversations_count":14,"users_count":10,"total_workers":30,"lat":17.9468568801104,"long":99.0197359730027,"scores":[{"category":"Worker Recommendation","score":[{"id":1,"value":3.0,"category_id":1,"group_id":1,"created_at":"2015-10-30T17:47:29.445Z","updated_at":"2015-10-30T17:47:29.732Z"}]},{"category":"Wages","score":[{"id":2,"value":1.0,"category_id":2,"group_id":1,"created_at":"2015-10-30T17:47:29.458Z","updated_at":"2015-10-30T17:47:29.741Z"}]},{"category":"Child Labor","score":[{"id":3,"value":2.0,"category_id":3,"group_id":1,"created_at":"2015-10-30T17:47:29.469Z","updated_at":"2015-10-30T17:47:29.745Z"}]},{"category":"Fire Safety","score":[{"id":4,"value":1.0,"category_id":4,"group_id":1,"created_at":"2015-10-30T17:47:29.480Z","updated_at":"2015-10-30T17:47:29.755Z"}]}],"created_at":"2015-10-30T17:47:29.727Z","updated_at":"2015-10-30T17:47:29.727Z"},{"id":2,"name":"Factory B","conversations_count":130,"users_count":100,"total_workers":150,"lat":18.8729892480271,"long":85.5507705400325,"scores":[{"category":"Worker Recommendation","score":[{"id":5,"value":4.0,"category_id":1,"group_id":2,"created_at":"2015-10-30T17:47:29.491Z","updated_at":"2015-10-30T17:47:29.773Z"}]},{"category":"Wages","score":[{"id":6,"value":1.0,"category_id":2,"group_id":2,"created_at":"2015-10-30T17:47:29.503Z","updated_at":"2015-10-30T17:47:29.777Z"}]},{"category":"Child Labor","score":[{"id":7,"value":3.0,"category_id":3,"group_id":2,"created_at":"2015-10-30T17:47:29.518Z","updated_at":"2015-10-30T17:47:29.780Z"}]},{"category":"Fire Safety","score":[{"id":8,"value":3.0,"category_id":4,"group_id":2,"created_at":"2015-10-30T17:47:29.530Z","updated_at":"2015-10-30T17:47:29.784Z"}]}],"created_at":"2015-10-30T17:47:29.770Z","updated_at":"2015-10-30T17:47:29.770Z"},{"id":3,"name":"Factory C","conversations_count":93,"users_count":45,"total_workers":120,"lat":17.987452634461,"long":84.6677053764018,"scores":[{"category":"Worker Recommendation","score":[{"id":9,"value":3.0,"category_id":1,"group_id":3,"created_at":"2015-10-30T17:47:29.544Z","updated_at":"2015-10-30T17:47:29.816Z"}]},{"category":"Wages","score":[{"id":10,"value":4.0,"category_id":2,"group_id":3,"created_at":"2015-10-30T17:47:29.558Z","updated_at":"2015-10-30T17:47:29.827Z"}]},{"category":"Child Labor","score":[{"id":11,"value":5.0,"category_id":3,"group_id":3,"created_at":"2015-10-30T17:47:29.568Z","updated_at":"2015-10-30T17:47:29.833Z"}]},{"category":"Fire Safety","score":[{"id":12,"value":1.0,"category_id":4,"group_id":3,"created_at":"2015-10-30T17:47:29.581Z","updated_at":"2015-10-30T17:47:29.837Z"}]}],"created_at":"2015-10-30T17:47:29.806Z","updated_at":"2015-10-30T17:47:29.806Z"},{"id":4,"name":"Factory D","conversations_count":229,"users_count":203,"total_workers":400,"lat":26.8906529352525,"long":84.8116942126579,"scores":[{"category":"Worker Recommendation","score":[{"id":13,"value":1.0,"category_id":1,"group_id":4,"created_at":"2015-10-30T17:47:29.599Z","updated_at":"2015-10-30T17:47:29.850Z"}]},{"category":"Wages","score":[{"id":14,"value":4.0,"category_id":2,"group_id":4,"created_at":"2015-10-30T17:47:29.615Z","updated_at":"2015-10-30T17:47:29.854Z"}]},{"category":"Child Labor","score":[{"id":15,"value":2.0,"category_id":3,"group_id":4,"created_at":"2015-10-30T17:47:29.631Z","updated_at":"2015-10-30T17:47:29.859Z"}]},{"category":"Fire Safety","score":[{"id":16,"value":5.0,"category_id":4,"group_id":4,"created_at":"2015-10-30T17:47:29.639Z","updated_at":"2015-10-30T17:47:29.864Z"}]}],"created_at":"2015-10-30T17:47:29.847Z","updated_at":"2015-10-30T17:47:29.847Z"},{"id":5,"name":"Factory E","conversations_count":23,"users_count":18,"total_workers":50,"lat":25.1265204544061,"long":86.2992781625552,"scores":[{"category":"Worker Recommendation","score":[{"id":17,"value":1.0,"category_id":1,"group_id":5,"created_at":"2015-10-30T17:47:29.659Z","updated_at":"2015-10-30T17:47:29.889Z"}]},{"category":"Wages","score":[{"id":18,"value":4.0,"category_id":2,"group_id":5,"created_at":"2015-10-30T17:47:29.667Z","updated_at":"2015-10-30T17:47:29.911Z"}]},{"category":"Child Labor","score":[{"id":19,"value":5.0,"category_id":3,"group_id":5,"created_at":"2015-10-30T17:47:29.673Z","updated_at":"2015-10-30T17:47:29.921Z"}]},{"category":"Fire Safety","score":[{"id":20,"value":3.0,"category_id":4,"group_id":5,"created_at":"2015-10-30T17:47:29.681Z","updated_at":"2015-10-30T17:47:29.925Z"}]}],"created_at":"2015-10-30T17:47:29.882Z","updated_at":"2015-10-30T17:47:29.882Z"}]};
-
-var app = angular.module('StarterApp', ['ngMaterial']);
-
-app.controller('AppCtrl', ['$scope', '$mdSidenav', '$http', function($scope, $mdSidenav, $http){
-  $scope.toggleSidenav = function(menuId) {
-    $mdSidenav(menuId).toggle();
-  };
-
-  // API call
-  var jqxhr = $.getJSON("http://lv-api.herokuapp.com/groups", function() {
-    console.log("request successfully sent");
-  })
-  .done(function(json) {
-    console.log("response succesfully received");
-    jsonData = json;
-    $scope.items = jsonData.groups;
-    initializeMarkers(jsonData);
-  })
-  .fail(function() {
-    console.log("json request failed, using static data");
-    jsonData = staticData;
-    initializeMarkers(jsonData);
-  })
-  .always(function() {
-  });
-}]);
-
 app.filter('searchFor', function(){
   return function(arr, query) {
     var visibilityChanged = false;  // does not redraw map unless needed
     if (!query) {
       for (var key in markerMap) {
         marker = markerMap[key];
-        if (!marker.getVisible()) { 
+        if (!marker.getVisible()) {
           marker.setVisible(true);
           visibilityChanged = true;
         }
@@ -292,16 +327,16 @@ app.filter('searchFor', function(){
       angular.forEach(arr, function(item){
         if (item.name.toLowerCase().indexOf(query) !== -1) {
           marker = markerMap[item.name];
-          if (!marker.getVisible()) { 
+          if (!marker.getVisible()) {
             marker.setVisible(true);
             visibilityChanged = true;
           }
         } else {
           marker = markerMap[item.name];
-          if (marker.getVisible()) { 
+          if (marker.getVisible()) {
             marker.setVisible(false);
             visibilityChanged = true;
-          }        
+          }
         }
       });
     }
@@ -310,4 +345,5 @@ app.filter('searchFor', function(){
       resizeMap();
   };
 });
+
 

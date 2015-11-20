@@ -80,10 +80,10 @@
 /* Styling;
  */
 .noUi-background {
-	background: #AAA;
+	background: #fff;
 }
 .noUi-connect {
-	background: rgb(255,64,129);
+	background: #55B6D7;
 }
 .noUi-origin {
 	border-radius: 2px;
@@ -101,7 +101,7 @@
 	cursor: n-resize;
 }
 .noUi-handle {
-	background: rgb(255,64,129);
+	background: #55B6D7;
 	cursor: default;
 }
 

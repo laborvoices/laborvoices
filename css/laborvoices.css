@@ -1,12 +1,23 @@
+.md-toolbar-tools {
+  background-color: #fff;
+}
+
 .md-toolbar-tools h1 {
   font-size: inherit;
   font-weight: inherit;
   margin: inherit;
+  color: #55B6D7;
+}
+
+.md-tooltip .bottom {
+  bottom: -10px;
 }
 
 md-sidenav,
 md-sidenav.md-locked-open,
 md-sidenav.md-closed.md-locked-open-add-active {
+    color: #fff;
+    background-color: #4A4A4A;
     min-width: 200px !important;
     width: 85vw !important;
     max-width: 400px !important;
@@ -16,28 +27,37 @@ md-sidenav.md-closed.md-locked-open-add-active {
   text-align: right;
 }
 
+.md-input-container {
+  input, label {
+    color: #fff;
+    background-color: #fff;
+  }
+
+}
+
 #sidebar-divider {
   margin: 20px 0px;
 }
 
 #sidebar-display {
+  color: #fff;
   display: none;
   height: 100%;
-  background-color: #eee;
+  background-color: #4A4A4A;
 }
 
 .slider-label {
   margin-top: 40px;
 }
 
-.rec-rating , .wages-rating, .labor-rating{
+.rec-rating , .wages-rating, .fire-rating{
   width: 75%;
   margin-left: 100px;
   margin-top: -10px;
   margin-bottom: 30px;
 }
 .value:before, .value {
-  content: "Value: ";
+  /*content: "Value: ";*/
   font: 10px Helvetica Neue;
   padding-right: 5px;
 }
