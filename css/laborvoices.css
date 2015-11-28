@@ -1,8 +1,20 @@
+/* Theme colors */
+/* blue accent is '#55B6D7'
+ * light grey is '#B7B7B7'
+ * dark grey sidebar is '4A4A4A'
+ */
+
 .header-logo {
   height: 64px;
 }
 
+md-toolbar {
+  position: fixed;
+  z-index: 1000;
+}
+
 .md-toolbar-tools {
+  position: fixed;
   background-color: #fff;
 }
 
@@ -17,26 +29,33 @@
   bottom: -10px;
 }
 
+.md-content {
+  height: 100%;
+}
+
 md-sidenav,
 md-sidenav.md-locked-open,
 md-sidenav.md-closed.md-locked-open-add-active {
-    color: #fff;
+    color: #B7B7B7;
     background-color: #4A4A4A;
     min-width: 200px !important;
     width: 85vw !important;
     max-width: 400px !important;
+    padding-top: 75px;
 }
 
 .right {
   text-align: right;
 }
 
-.md-input-container {
-  input, label {
-    color: #fff;
-    background-color: #fff;
-  }
 
+md-input-container.md-altTheme-theme label,
+md-input-container.md-altTheme-theme .md-placeholder{
+  color: #55B6D7;
+}
+md-input-container.md-altTheme-theme .md-input{
+  color: #B7B7B7;
+  border-color: #B7B7B7;
 }
 
 #sidebar-divider {
@@ -44,24 +63,67 @@ md-sidenav.md-closed.md-locked-open-add-active {
 }
 
 #sidebar-display {
+  visibility: hidden;
   color: #fff;
   display: none;
   height: 100%;
   background-color: #4A4A4A;
 }
 
-.slider-label {
-  margin-top: 40px;
+#group-name, #group-score {
+  color: #55B6D7;
+  font-size: 24px;
 }
 
-.rec-rating , .wages-rating, .fire-rating{
+#group-score-divisor {
+  color: #55B6D7;
+  font-size: 16px;
+  line-height: 32px;
+}
+
+.md-subhead, #group-size, #group-recommendation, #group-fire-safety, #group-wages, #group-child-labor {
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.label-slider {
+  font-size: 12px;
+}
+
+a.tooltip {
+  font-size: 12px;
+  color: #B7B7B7;
+  outline:none;
+}
+a.tooltip:hover {text-decoration:none;}
+a.tooltip span {
+  font-size: 10px;
+  z-index:10;
+  display:none;
+  padding:5px;
+  margin-top:-40px;
+  margin-left:10px;
+  width:200px;
+}
+a.tooltip:hover span{
+    display:inline;
+    position:absolute;
+    color:#4A4A4A;
+    background:#B7B7B7;
+    opacity: 0.95;
+    border-radius: 3px;
+}
+
+
+
+.overall-rating, .rec-rating , .fire-rating, .wages-rating, .fire-rating, .labor-rating {
   width: 75%;
   margin-left: 100px;
   margin-top: -10px;
   margin-bottom: 30px;
 }
 .value:before, .value {
-  /*content: "Value: ";*/
+  opacity: 0;
   font: 10px Helvetica Neue;
   padding-right: 5px;
 }
