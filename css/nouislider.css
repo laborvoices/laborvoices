@@ -59,7 +59,7 @@
 /* Slider size and handle placement;
  */
 .noUi-horizontal {
-	height: 2px;
+	height: 1px;
 }
 .noUi-horizontal .noUi-handle {
 	width: 8px;
@@ -80,7 +80,7 @@
 /* Styling;
  */
 .noUi-background {
-	background: #fff;
+	background: #B7B7B7;
 }
 .noUi-connect {
 	background: #55B6D7;
@@ -103,6 +103,12 @@
 .noUi-handle {
 	background: #55B6D7;
 	cursor: default;
+}
+
+.noUi-tooltip {
+	font-size: 10px;
+	padding-top: 18px;
+	padding-left: 1.5px;
 }
 
 
