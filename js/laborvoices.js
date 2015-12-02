@@ -166,7 +166,6 @@ function initializeSliders() {
     } else {
       overallMin.innerHTML = values[handle];
     }
-    // filterBySliders(overallMin.innerHTML, overallMax.innerHTML, "overall");
     filterByAllSliders();
   });
 
@@ -193,7 +192,6 @@ function initializeSliders() {
     } else {
       recMin.innerHTML = values[handle];
     }
-    // filterBySliders(recMin.innerHTML, recMax.innerHTML, "rec");
     filterByAllSliders();
   });
 
@@ -220,7 +218,6 @@ function initializeSliders() {
     } else {
       fireMin.innerHTML = values[handle];
     }
-    // filterBySliders(fireMin.innerHTML, fireMax.innerHTML, "fire");
     filterByAllSliders();
   });
 
@@ -247,7 +244,6 @@ function initializeSliders() {
     } else {
       wagesMin.innerHTML = values[handle];
     }
-    // filterBySliders(wagesMin.innerHTML, wagesMax.innerHTML, "wages");
     filterByAllSliders();
   });
 
@@ -274,7 +270,6 @@ function initializeSliders() {
     } else {
       laborMin.innerHTML = values[handle];
     }
-    // filterBySliders(laborMin.innerHTML, laborMax.innerHTML, "labor");
     filterByAllSliders();
   });
 }
@@ -319,33 +314,6 @@ function filterByAllSliders() {
     }
     marker = markerMap[item.name]
     marker.setVisible(visible);
-  });
-}
-
-function filterBySliders(min, max, category) {
-  filter = 0;
-  if (category == "rec") {
-    filter = 0;
-  }
-  if (category == "wages") {
-    filter = 1;
-  }
-  if (category == "labor") {
-    filter = 2;
-  }
-  if (category == "fire") {
-    filter = 3;
-  }
-
-  jsonData.groups.forEach(function(item) {
-    val = item.scores[filter].score[0].value;
-    if (val >= min && val <= max) {
-      marker = markerMap[item.name]
-      marker.setVisible(true);
-    } else {
-      marker = markerMap[item.name];
-      marker.setVisible(false);
-    }
   });
 }
 
