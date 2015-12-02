@@ -214,7 +214,8 @@ function initializeSliders() {
     } else {
       overallMin.innerHTML = values[handle];
     }
-    filterBySliders(overallMin.innerHTML, overallMax.innerHTML, "overall");
+    // filterBySliders(overallMin.innerHTML, overallMax.innerHTML, "overall");
+    filterByAllSliders();
   });
 
   // Worker Recommendation Slider
@@ -240,7 +241,8 @@ function initializeSliders() {
     } else {
       recMin.innerHTML = values[handle];
     }
-    filterBySliders(recMin.innerHTML, recMax.innerHTML, "rec");
+    // filterBySliders(recMin.innerHTML, recMax.innerHTML, "rec");
+    filterByAllSliders();
   });
 
   // Fire Safety Slider
@@ -266,7 +268,8 @@ function initializeSliders() {
     } else {
       fireMin.innerHTML = values[handle];
     }
-    filterBySliders(fireMin.innerHTML, fireMax.innerHTML, "fire");
+    // filterBySliders(fireMin.innerHTML, fireMax.innerHTML, "fire");
+    filterByAllSliders();
   });
 
   // Wages Slider
@@ -292,7 +295,8 @@ function initializeSliders() {
     } else {
       wagesMin.innerHTML = values[handle];
     }
-    filterBySliders(wagesMin.innerHTML, wagesMax.innerHTML, "wages");
+    // filterBySliders(wagesMin.innerHTML, wagesMax.innerHTML, "wages");
+    filterByAllSliders();
   });
 
   // Child Labor Slider
@@ -318,17 +322,52 @@ function initializeSliders() {
     } else {
       laborMin.innerHTML = values[handle];
     }
-    filterBySliders(laborMin.innerHTML, laborMax.innerHTML, "labor");
+    // filterBySliders(laborMin.innerHTML, laborMax.innerHTML, "labor");
+    filterByAllSliders();
   });
 }
 
+var sliderIds = ["slider-overall", "slider-rec", "slider-wages", "slider-labor", "slider-fire"];
+
 function resetFilters() {
   console.log("Resetting filters.");
-  var sliderIds = ["slider-overall", "slider-rec", "slider-fire", "slider-wages", "slider-labor"];
   for (var i = 0; i < sliderIds.length; i++) {
     var slider = document.getElementById(sliderIds[i]);
     slider.noUiSlider.set([1, 5]);
   }
+}
+
+function filterByAllSliders() {\
+  jsonData.groups.forEach(function(item) {
+    // for each filter, update if the marker should be visible
+    var visible = true;
+    // overall
+    {
+      var filter = 0;
+      var minId = sliderIds[filter]+"-min";
+      var maxId = sliderIds[filter]+"-max";
+      var min = document.getElementById(minId).innerHTML;
+      var max = document.getElementById(maxId).innerHTML;
+      var val = item.scores[filter].score[0].value;
+      if (val < min || val > max) {
+        visible = false;
+      }
+    }
+
+    // worker rec through labor
+    for (var filter = 0; filter < 4; filter++) {
+      var minId = sliderIds[filter+1]+"-min";
+      var maxId = sliderIds[filter+1]+"-max";
+      var min = document.getElementById(minId).innerHTML;
+      var max = document.getElementById(maxId).innerHTML;
+      var val = item.scores[filter].score[0].value;
+      if (val < min || val > max) {
+        visible = false;
+      }
+    }
+    marker = markerMap[item.name]
+    marker.setVisible(visible);
+  });
 }
 
 function filterBySliders(min, max, category) {
