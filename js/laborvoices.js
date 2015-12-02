@@ -322,6 +322,15 @@ function initializeSliders() {
   });
 }
 
+function resetFilters() {
+  console.log("Resetting filters.");
+  var sliderIds = ["slider-overall", "slider-rec", "slider-fire", "slider-wages", "slider-labor"];
+  for (var i = 0; i < sliderIds.length; i++) {
+    var slider = document.getElementById(sliderIds[i]);
+    slider.noUiSlider.set([1, 5]);
+  }
+}
+
 function filterBySliders(min, max, category) {
   filter = 0;
   if (category == "rec") {
